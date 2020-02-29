@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/data_container_wrapper"
+    android:background="@drawable/list_border"
+    android:padding="@dimen/padding_common"
+    android:layout_margin="@dimen/margin_common"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <TextView
+            tools:text="category"
+            android:id="@+id/shopping_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2" />
+
+        <TextView
+            tools:text="name"
+            android:id="@+id/shopping_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_category"/>
+
+        <TextView
+            tools:text="price"
+            android:id="@+id/shopping_product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_product_name"/>
+
+        <TextView
+            tools:text="old price"
+            android:id="@+id/shopping_product_old_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_product_price"/>
+
+        <TextView
+            tools:text="discounted price"
+            android:id="@+id/shopping_product_discounted_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_product_old_price"/>
+
+        <TextView
+            tools:text="stock"
+            android:id="@+id/shopping_product_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_product_discounted_price"/>
+
+</RelativeLayout>
+
