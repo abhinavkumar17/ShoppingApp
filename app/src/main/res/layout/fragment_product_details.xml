@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/data_container_wrapper"
+    android:padding="@dimen/padding_common"
+    android:layout_margin="@dimen/margin_common"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <TextView
+            tools:text="category"
+            android:id="@+id/shoppingd_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2" />
+
+        <TextView
+            tools:text="name"
+            android:id="@+id/shoppingd_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shoppingd_category"/>
+
+        <TextView
+            tools:text="price"
+            android:id="@+id/shoppingd_product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shoppingd_product_name"/>
+
+        <TextView
+            tools:text="old price"
+            android:id="@+id/shoppingd_product_old_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shoppingd_product_price"/>
+
+        <TextView
+            tools:text="discounted price"
+            android:id="@+id/shoppingd_product_discounted_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shoppingd_product_old_price"/>
+
+        <TextView
+            tools:text="stock"
+            android:id="@+id/shoppingd_product_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shoppingd_product_discounted_price"/>
+
+        <LinearLayout
+            android:id="@+id/cart_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="@dimen/padding_common_big"
+            android:layout_below="@+id/shoppingd_product_stock">
+                <Button
+                    android:id="@+id/add_remove_from_cart_Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Add Cart">
+                </Button>
+
+                <Button
+                    android:id="@+id/cart_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cart">
+                </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/wish_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="@dimen/padding_common_big"
+            android:layout_below="@+id/cart_layout">
+                <Button
+                    android:id="@+id/add_remove_from_wish_Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Add WishList">
+                </Button>
+
+                <Button
+                    android:id="@+id/wish_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WishList">
+                </Button>
+        </LinearLayout>
+
+
+</RelativeLayout>
+

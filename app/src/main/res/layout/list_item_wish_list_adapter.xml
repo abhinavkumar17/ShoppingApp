@@ -16,6 +16,15 @@
             android:layout_height="wrap_content"
             android:maxLines="2" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wish_list_item_delete"
+            android:src="@drawable/ic_clear_black_24dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            />
+
         <TextView
             tools:text="name"
             android:id="@+id/wishlist_product_name"
@@ -50,6 +59,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/wishlist_product_discounted_price"/>
+
+        <Button
+            android:id="@+id/wishlist_to_cart"
+            android:padding="@dimen/padding_common_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Move to cart"
+            android:layout_below="@+id/wishlist_product_stock">
+
+        </Button>
 
 </RelativeLayout>
 

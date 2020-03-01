@@ -2,4 +2,5 @@
 <resources>
     <dimen name="padding_common">5dp</dimen>
     <dimen name="margin_common">5dp</dimen>
+    <dimen name="padding_common_big">15dp</dimen>
 </resources>

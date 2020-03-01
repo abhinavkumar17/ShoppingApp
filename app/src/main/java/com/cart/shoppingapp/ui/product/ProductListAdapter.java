@@ -53,22 +53,22 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     static final class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.shopping_category)
+        @BindView(R.id.wishlist_category)
         TextView categoryTextView;
 
-        @BindView(R.id.shopping_product_price)
+        @BindView(R.id.wishlist_product_price)
         TextView productPrice;
 
-        @BindView(R.id.shopping_product_name)
+        @BindView(R.id.wishlist_product_name)
         TextView productName;
 
-        @BindView(R.id.shopping_product_old_price)
+        @BindView(R.id.wishlist_product_old_price)
         TextView producOldPrice;
 
-        @BindView(R.id.shopping_product_discounted_price)
+        @BindView(R.id.wishlist_product_discounted_price)
         TextView producDiscountedPrice;
 
-        @BindView(R.id.shopping_product_stock)
+        @BindView(R.id.wishlist_product_stock)
         TextView producStock;
 
         private Product product;
@@ -90,7 +90,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             categoryTextView.setText(product.getCaterogy());
             productPrice.setText(product.getPrice());
             producOldPrice.setText(product.getPrice());
-            producStock.setText(product.getStock());
+            producStock.setText(Integer.toString(product.getStock()));
         }
     }
 }

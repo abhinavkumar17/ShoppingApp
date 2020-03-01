@@ -18,7 +18,7 @@ public class Product implements Parcelable {
     @NonNull
     private String oldPrice;
     @NonNull
-    private String stock;
+    private int stock;
 
     protected Product(Parcel in) {
         id = in.readInt();
@@ -26,7 +26,7 @@ public class Product implements Parcelable {
         caterogy = in.readString();
         price = in.readString();
         oldPrice = in.readString();
-        stock = in.readString();
+        stock = in.readInt();
     }
 
     public int getId() {
@@ -69,11 +69,11 @@ public class Product implements Parcelable {
         this.oldPrice = oldPrice;
     }
 
-    public String getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
@@ -103,6 +103,6 @@ public class Product implements Parcelable {
         parcel.writeString(caterogy);
         parcel.writeString(price);
         parcel.writeString(oldPrice);
-        parcel.writeString(stock);
+        parcel.writeInt(stock);
     }
 }

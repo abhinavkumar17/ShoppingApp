@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import io.reactivex.Single;
 import retrofit2.Call;
 
-class ShoppingRepository {
+public class ShoppingRepository {
 
     private final ShoppingService mShoppingService;
     private final WishListDao wishListDao;
@@ -48,7 +48,7 @@ class ShoppingRepository {
         wishListProduct.setName(product.getName());
         wishListProduct.setPrice(product.getPrice());
         wishListProduct.setCaterogy(product.getCaterogy());
-        wishListProduct.setStock(product.getStock());
+        wishListProduct.setStock(Integer.toString(product.getStock()));
         wishListProduct.setOldPrice(product.getOldPrice());
         wishListDao.insert(wishListProduct);
     }

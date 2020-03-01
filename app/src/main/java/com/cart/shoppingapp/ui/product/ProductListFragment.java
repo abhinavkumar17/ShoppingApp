@@ -80,7 +80,7 @@ public class ProductListFragment extends DaggerFragment implements ProductListVi
     public void onProductItemClick(Product product) {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.add(R.id.screenContainer, ProductDetailsFragment.getInstance(product));
+        fragmentTransaction.replace(R.id.screenContainer, ProductDetailsFragment.newInstance(product));
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
