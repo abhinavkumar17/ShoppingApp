@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e81d4872-b683-4f37-9803-8afb20fbd368" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/di/module/AppModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/di/module/AppModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/product/ProductListViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/product/ProductListViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/product/ShoppingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/repository/ShoppingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/product/ShoppingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/repository/ShoppingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/productdetails/ProductDetailsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/productdetails/ProductDetailsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/productdetails/ProductDetailsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/productdetails/ProductDetailsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/wishlist/WishListViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/cart/shoppingapp/ui/wishlist/WishListViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../build.gradle" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="-8" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.proportion" value="0.15" />
+    <property name="android.sdk.path" value="D:/Abhinav/android_sdk/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e81d4872-b683-4f37-9803-8afb20fbd368" name="Default Changelist" comment="" />
+      <created>1583095924376</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583095924376</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.2470238" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Resources Explorer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.cart.shoppingapp.model.Product;
+
 @Entity(tableName = "wishlist_products")
 public class WishListProduct {
 
@@ -25,8 +27,29 @@ public class WishListProduct {
     private String oldPrice;
 
     @ColumnInfo(name = "wishlist_stock")
-    private String stock;
+    private int stock;
 
+    public WishListProduct(){
+
+    }
+
+    public WishListProduct(int id, String name, String category, String price, String old_price, int stock) {
+        this.id = id;
+        this.name = name;
+        this.caterogy = category;
+        this.price = price;
+        this.oldPrice = old_price;
+        this.stock = stock;
+    }
+
+    public WishListProduct(WishListProduct wishListProduct) {
+        this.id = wishListProduct.id;
+        this.name = wishListProduct.name;
+        this.caterogy = wishListProduct.caterogy;
+        this.price = wishListProduct.price;
+        this.oldPrice = wishListProduct.oldPrice;
+        this.stock = wishListProduct.stock;
+    }
 
     public int getId() {
         return id;
@@ -68,11 +91,11 @@ public class WishListProduct {
         this.oldPrice = oldPrice;
     }
 
-    public String getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 }

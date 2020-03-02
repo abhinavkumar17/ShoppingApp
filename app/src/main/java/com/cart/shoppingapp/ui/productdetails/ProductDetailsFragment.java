@@ -103,6 +103,5 @@ public class ProductDetailsFragment extends DaggerFragment implements ProductDet
         }else {
             Toast.makeText(getContext(), getContext().getResources().getString((R.string.outofstock)), Toast.LENGTH_SHORT).show();
         }
-
     }
 }

@@ -36,7 +36,8 @@ allprojects {
             room                   : "2.1.0-alpha04",
             lifecycleVersion       : "2.0.0",
             constraintLayoutVersion: "1.1.2",
-            picassoVersion         : "2.71828"
+            picassoVersion         : "2.71828",
+            mockito                : "2.12.0"
 
     ]
 
@@ -98,7 +99,8 @@ allprojects {
 
                     junit              : "junit:junit:${versions.jUnitVersion}",
                     support_test_runner: "com.android.support.test:runner:${versions.testRunnerVersion}",
-                    espresso_core      : "com.android.support.test.espresso:espresso-core:${versions.espressoVersion}"
+                    espresso_core      : "com.android.support.test.espresso:espresso-core:${versions.espressoVersion}",
+                    mockito_test_runner      : "org.mockito:mockito-core:${versions.mockito}"
 
             ]
 

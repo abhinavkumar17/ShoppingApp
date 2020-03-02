@@ -99,7 +99,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
             wishListName.setText(product.getName());
             wishListPrice.setText(product.getPrice());
             wishListOldPrice.setText(product.getPrice());
-            wishListStock.setText(product.getStock());
+            wishListStock.setText(String.valueOf(product.getStock()));
         }
     }
 }

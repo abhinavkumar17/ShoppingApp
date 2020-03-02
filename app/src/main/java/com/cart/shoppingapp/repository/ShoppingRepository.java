@@ -1,4 +1,4 @@
-package com.cart.shoppingapp.ui.product;
+package com.cart.shoppingapp.repository;
 
 import com.cart.shoppingapp.db.wishlist.WishListDao;
 import com.cart.shoppingapp.db.wishlist.WishListProduct;
@@ -48,7 +48,7 @@ public class ShoppingRepository {
         wishListProduct.setName(product.getName());
         wishListProduct.setPrice(product.getPrice());
         wishListProduct.setCaterogy(product.getCaterogy());
-        wishListProduct.setStock(Integer.toString(product.getStock()));
+        wishListProduct.setStock(product.getStock());
         wishListProduct.setOldPrice(product.getOldPrice());
         wishListDao.insert(wishListProduct);
     }

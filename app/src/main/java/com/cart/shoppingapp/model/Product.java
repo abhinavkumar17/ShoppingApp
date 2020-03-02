@@ -3,9 +3,12 @@ package com.cart.shoppingapp.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Ignore;
+
 import io.reactivex.annotations.NonNull;
 
 public class Product implements Parcelable {
+
 
     @NonNull
     private int id;
@@ -19,6 +22,26 @@ public class Product implements Parcelable {
     private String oldPrice;
     @NonNull
     private int stock;
+
+    public Product(int id, String name, String caterogy, String price, String oldPrice, int stock) {
+        this.id = id;
+        this.name = name;
+        this.caterogy = caterogy;
+        this.price = price;
+        this.oldPrice = oldPrice;
+        this.stock = stock;
+    }
+
+    @Ignore
+    public Product(Product product) {
+        this.id = product.id;
+        this.name = product.name;
+        this.caterogy = product.caterogy;
+        this.price = product.price;
+        this.oldPrice = product.oldPrice;
+        this.stock = product.stock;
+    }
+
 
     protected Product(Parcel in) {
         id = in.readInt();

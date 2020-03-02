@@ -18,6 +18,8 @@ import com.cart.shoppingapp.model.Product;
 import com.cart.shoppingapp.ui.baseview.ViewMvcFactory;
 import com.cart.shoppingapp.ui.productdetails.ProductDetailsFragment;
 
+import org.junit.Rule;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -25,6 +27,7 @@ import javax.inject.Inject;
 import dagger.android.support.DaggerFragment;
 
 public class ProductListFragment extends DaggerFragment implements ProductListView.Listener {
+
 
     @Inject
     ViewMvcFactory mViewMvcFactory;
@@ -35,6 +38,8 @@ public class ProductListFragment extends DaggerFragment implements ProductListVi
     private ProductListView mProductListView;
 
     private ProductListViewModel mProductListViewModel;
+
+    private List<Product> mProcucts;
 
     public static ProductListFragment newInstance() {
         ProductListFragment fragment = new ProductListFragment();
@@ -55,19 +60,25 @@ public class ProductListFragment extends DaggerFragment implements ProductListVi
     public void onStart() {
         super.onStart();
         mProductListView.registerListener(this);
+        mProductListView.showProgressIndication();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         getProductListData();
     }
 
     private void getProductListData() {
-        mProductListView.showProgressIndication();
         mProductListViewModel.fetchData();
-        mProductListViewModel.getProductList().observe(this, new Observer<List<Product>>() {
-            @Override
-            public void onChanged(List<Product> products) {
-                mProductListView.hideProgressIndication();
-                mProductListView.bindProductData(products);
-            }
-        });
+            mProductListViewModel.getProductList().observe(this, new Observer<List<Product>>() {
+                @Override
+                public void onChanged(List<Product> products) {
+                    mProcucts =products;
+                    mProductListView.hideProgressIndication();
+                    mProductListView.bindProductData(products);
+                }
+            });
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.cart.shoppingapp.ui.product;
+package com.cart.shoppingapp.repository;
 
 import com.cart.shoppingapp.model.CartDetails;
 import com.cart.shoppingapp.model.Product;

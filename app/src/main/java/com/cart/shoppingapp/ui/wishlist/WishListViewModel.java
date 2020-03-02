@@ -2,10 +2,11 @@ package com.cart.shoppingapp.ui.wishlist;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.cart.shoppingapp.db.wishlist.WishListProduct;
-import com.cart.shoppingapp.ui.product.ShoppingRepository;
+import com.cart.shoppingapp.repository.ShoppingRepository;
 
 import java.util.HashSet;
 import java.util.List;

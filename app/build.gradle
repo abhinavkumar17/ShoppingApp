@@ -21,6 +21,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -87,4 +91,9 @@ dependencies {
     testImplementation deps.test.junit
     androidTestImplementation deps.test.support_test_runner
     androidTestImplementation deps.test.espresso_core
+    testImplementation deps.test.mockito_test_runner
+    def androidx_arch_test_version = "2.0.1"
+    androidTestImplementation "androidx.arch.core:core-testing:$androidx_arch_test_version"
+    testImplementation "android.arch.core:core-testing:1.1.1"
+
 }

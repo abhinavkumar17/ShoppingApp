@@ -1,19 +1,12 @@
 package com.cart.shoppingapp.di.module;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.view.LayoutInflater;
-
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.cart.shoppingapp.di.viewmodule.ViewModelModule;
-import com.cart.shoppingapp.ui.product.ShoppingService;
+import com.cart.shoppingapp.repository.ShoppingService;
 
 import javax.inject.Singleton;
 
-import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;

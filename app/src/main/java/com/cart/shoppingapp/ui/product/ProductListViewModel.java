@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.cart.shoppingapp.model.CartDetails;
 import com.cart.shoppingapp.model.Product;
+import com.cart.shoppingapp.repository.ShoppingRepository;
 
 import java.util.List;
 
@@ -26,9 +27,9 @@ public class ProductListViewModel extends ViewModel {
 
     private CompositeDisposable mCompositeDisposable;
 
-    private final MutableLiveData<List<Product>> productList = new MutableLiveData<>();
+    private MutableLiveData<List<Product>> productList = new MutableLiveData<>();
 
-    private final MutableLiveData<List<CartDetails>> cartList = new MutableLiveData<>();
+    private MutableLiveData<List<CartDetails>> cartList = new MutableLiveData<>();
 
     @Inject
     ProductListViewModel(ShoppingRepository shoppingRepository) {
@@ -36,15 +37,19 @@ public class ProductListViewModel extends ViewModel {
         mCompositeDisposable = new CompositeDisposable();
     }
 
-    LiveData<List<Product>> getProductList() {
+    public LiveData<List<Product>> getProductList() {
         return productList;
+    }
+
+    public void setProductList(MutableLiveData<List<Product>> productList) {
+        this.productList = productList;
     }
 
     public LiveData<List<CartDetails>> getAllCartList() {
         return cartList;
     }
 
-    void fetchData() {
+    public void fetchData() {
         mCompositeDisposable.add(mShoppingRepository.getProducts().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<Product>>() {
                     @Override
