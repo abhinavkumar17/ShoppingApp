@@ -26,7 +26,8 @@ Dagger2
 * Factory design pattern:  Fragment creation happens at runtime based on the classname passed. This is done through ViewFactory class.
                 
 # Room: 
-        App uses Room database to store Wishlist Data. This is achieved though creating model,dao and database whihc is initillized using Dagger.
+        App uses Room database to store Wishlist Data. This is achieved though creating model,dao and 
+        database whihc is initillized using Dagger.
         
 # Repository:
         App uses shopping repository as single point of truth for webservice and database management(ShoppingRepository class)
@@ -35,7 +36,9 @@ Dagger2
        RX is used for multithrading for POST, GET, DELETE and GET. This is used in combination with Retrofit.(ShoppingService.class)
         
 # Dagger 2:
-       App uses Dagger2 as dependency library. This is done to reduce boilerplate code. This has been acheived through seprating it into component, module. Also to resolve Viewmodel DI issue seperate callses are created as ViewModelProviderFactory class and bind Annotations.
+       App uses Dagger2 as dependency library. This is done to reduce boilerplate code. This has been acheived through seprating it 
+       into component, module. Also to resolve Viewmodel DI issue seperate callses are created as ViewModelProviderFactory class 
+       and bind Annotations.
 
 
 
