@@ -20,10 +20,10 @@ public abstract class ProductDatabaseTest {
 
     @Before
     public void init(){
-        wishListDataBase = Room.inMemoryDatabaseBuilder(
-                ApplicationProvider.getApplicationContext(),
+       /* wishListDataBase = Room.inMemoryDatabaseBuilder(
+                getApplicationContext(),
                 WishListDataBase.class
-        ).build();
+        ).build();*/
     }
 
     @After

@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.cart.shoppingapp.R;
 import com.cart.shoppingapp.model.CartDetails;
-import com.cart.shoppingapp.ui.baseview.BaseViewMvc;
+import com.cart.shoppingapp.ui.baseview.BaseView;
 
 import java.util.List;
 
-public class CartDetailsFragmentImpl extends BaseViewMvc<CartDetailsView.Listener> implements CartDetailsView,
+public class CartDetailsFragmentImpl extends BaseView<CartDetailsView.Listener> implements CartDetailsView,
         CartListAdapter.CartSelectionListener {
 
     private static final int NO_OF_COLUMNS = 1;

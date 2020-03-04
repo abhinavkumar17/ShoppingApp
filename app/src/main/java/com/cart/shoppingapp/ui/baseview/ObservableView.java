@@ -1,6 +1,6 @@
 package com.cart.shoppingapp.ui.baseview;
 
-public interface ObservableViewMvc<ListenerType> extends ViewMvc  {
+public interface ObservableView<ListenerType> extends ViewRoot {
 
     /**
      * Register a listener that will be notified of any input events performed on this MVC view

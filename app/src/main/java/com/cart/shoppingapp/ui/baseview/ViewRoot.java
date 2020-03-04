@@ -6,7 +6,7 @@ import com.cart.shoppingapp.model.Product;
 
 import java.util.List;
 
-public interface ViewMvc {
+public interface ViewRoot {
     /**
      * Get the root Android View which is used internally by this MVC View for presenting data
      * to the user.<br>

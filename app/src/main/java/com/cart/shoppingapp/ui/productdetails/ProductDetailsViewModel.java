@@ -6,7 +6,6 @@ import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.cart.shoppingapp.db.wishlist.WishListProduct;
@@ -91,8 +90,8 @@ public class ProductDetailsViewModel extends ViewModel {
         }
     }
 
-    void fetchData() {
-         mCompositeDisposable.add(mShoppingRepository.getAllWishListProducts().subscribeOn(Schedulers.io())
+    private void fetchData() {
+        mCompositeDisposable.add(mShoppingRepository.getAllWishListProducts().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<WishListProduct>>() {
                     @Override
                     public void onSuccess(List<WishListProduct> products) {

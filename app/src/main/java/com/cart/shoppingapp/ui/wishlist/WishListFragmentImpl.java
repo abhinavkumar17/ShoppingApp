@@ -11,13 +11,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.cart.shoppingapp.R;
 import com.cart.shoppingapp.db.wishlist.WishListProduct;
-import com.cart.shoppingapp.model.CartDetails;
-import com.cart.shoppingapp.ui.baseview.BaseViewMvc;
-import com.cart.shoppingapp.ui.cartdetails.CartListAdapter;
+import com.cart.shoppingapp.ui.baseview.BaseView;
 
 import java.util.List;
 
-public class WishListFragmentImpl extends BaseViewMvc<WishListView.Listener> implements WishListView,
+public class WishListFragmentImpl extends BaseView<WishListView.Listener> implements WishListView,
         WishListAdapter.ProductSelectionListener {
 
     private static final int NO_OF_COLUMNS = 1;

@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.cart.shoppingapp.R;
 import com.cart.shoppingapp.di.viewmodule.ViewModelProviderFactory;
 import com.cart.shoppingapp.model.Product;
-import com.cart.shoppingapp.ui.baseview.ViewMvcFactory;
+import com.cart.shoppingapp.ui.baseview.ViewFactory;
 import com.cart.shoppingapp.ui.cartdetails.CartDetailsFragment;
 import com.cart.shoppingapp.ui.wishlist.WishListFragment;
 
@@ -31,7 +31,7 @@ public class ProductDetailsFragment extends DaggerFragment implements ProductDet
     private ProductDetailsViewModel mProductDetailsViewModel;
 
     @Inject
-    ViewMvcFactory mViewMvcFactory;
+    ViewFactory mViewFactory;
 
     @Inject
     ViewModelProviderFactory mViewModelProviderFactory;
@@ -55,7 +55,7 @@ public class ProductDetailsFragment extends DaggerFragment implements ProductDet
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mProductDetailsView = mViewMvcFactory.newInstance(ProductDetailsView.class,container,inflater);
+        mProductDetailsView = mViewFactory.newInstance(ProductDetailsView.class,container,inflater);
         mProductDetailsViewModel = ViewModelProviders.of(this, mViewModelProviderFactory).get(ProductDetailsViewModel.class);
         return mProductDetailsView.getRootView();
     }

@@ -17,33 +17,33 @@ import javax.inject.Inject;
 
 import io.reactivex.annotations.Nullable;
 
-public class ViewMvcFactory {
+public class ViewFactory {
 
     private final Context mContext;
 
     @Inject
-    public ViewMvcFactory(Context context) {
+    public ViewFactory(Context context) {
         mContext = context;
     }
 
-    public <T extends ViewMvc> T newInstance(Class<T> mvcViewClass, @Nullable ViewGroup container,LayoutInflater mLayoutInflater) {
+    public <T extends ViewRoot> T newInstance(Class<T> mvcViewClass, @Nullable ViewGroup container, LayoutInflater mLayoutInflater) {
 
-        ViewMvc viewMvc;
+        ViewRoot viewRoot;
 
         if (mvcViewClass == ProductListView.class) {
-            viewMvc = new ProductListViewImpl(mLayoutInflater, container);
+            viewRoot = new ProductListViewImpl(mLayoutInflater, container);
         }else if(mvcViewClass == ProductDetailsView.class){
-            viewMvc = new ProductDetailsFragmentImpl(mLayoutInflater, container);
+            viewRoot = new ProductDetailsFragmentImpl(mLayoutInflater, container);
         }else if(mvcViewClass == WishListView.class){
-            viewMvc = new WishListFragmentImpl(mLayoutInflater, container);
+            viewRoot = new WishListFragmentImpl(mLayoutInflater, container);
         }else if(mvcViewClass == CartDetailsView.class){
-            viewMvc = new CartDetailsFragmentImpl(mLayoutInflater, container);
+            viewRoot = new CartDetailsFragmentImpl(mLayoutInflater, container);
         }
         else {
             throw new IllegalArgumentException("unsupported MVC view class " + mvcViewClass);
         }
 
         //noinspection unchecked
-        return (T) viewMvc;
+        return (T) viewRoot;
     }
 }

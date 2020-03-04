@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.cart.shoppingapp.R;
 import com.cart.shoppingapp.model.Product;
-import com.cart.shoppingapp.ui.baseview.BaseViewMvc;
+import com.cart.shoppingapp.ui.baseview.BaseView;
 
 import java.util.List;
 
-public class ProductListViewImpl extends BaseViewMvc<ProductListView.Listener>
+public class ProductListViewImpl extends BaseView<ProductListView.Listener>
         implements ProductListView, ProductListAdapter.ProductSelectionListener {
 
     private static final int NO_OF_COLUMNS = 2;

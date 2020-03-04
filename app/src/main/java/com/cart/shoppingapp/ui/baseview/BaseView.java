@@ -6,8 +6,8 @@ import android.view.View;
 import androidx.annotation.IdRes;
 import androidx.annotation.StringRes;
 
-public abstract class BaseViewMvc<ListenerType> extends BaseObservable<ListenerType>
-        implements ObservableViewMvc<ListenerType> {
+public abstract class BaseView<ListenerType> extends BaseObservable<ListenerType>
+        implements ObservableView<ListenerType> {
 
     private View mRootView;
 

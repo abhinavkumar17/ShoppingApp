@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import com.cart.shoppingapp.R;
 import com.cart.shoppingapp.model.Product;
-import com.cart.shoppingapp.ui.baseview.BaseViewMvc;
+import com.cart.shoppingapp.ui.baseview.BaseView;
 
 
 
-public class ProductDetailsFragmentImpl extends BaseViewMvc<ProductDetailsView.Listener> implements ProductDetailsView {
+public class ProductDetailsFragmentImpl extends BaseView<ProductDetailsView.Listener> implements ProductDetailsView {
 
     private final TextView mCategory;
     private final TextView mPrice;

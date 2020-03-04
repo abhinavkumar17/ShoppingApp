@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.cart.shoppingapp.db.wishlist.WishListProduct;
 import com.cart.shoppingapp.di.viewmodule.ViewModelProviderFactory;
 import com.cart.shoppingapp.model.Product;
-import com.cart.shoppingapp.ui.baseview.ViewMvcFactory;
+import com.cart.shoppingapp.ui.baseview.ViewFactory;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class WishListFragment extends DaggerFragment implements WishListView.Lis
     ViewModelProviderFactory mViewModelProviderFactory;
 
     @Inject
-    ViewMvcFactory mViewMvcFactory;
+    ViewFactory mViewFactory;
 
     private WishListView mWishListView;
     private WishListViewModel mWishListViewModel;
@@ -47,7 +47,7 @@ public class WishListFragment extends DaggerFragment implements WishListView.Lis
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mWishListView = mViewMvcFactory.newInstance(WishListView.class, container, inflater);
+        mWishListView = mViewFactory.newInstance(WishListView.class, container, inflater);
         mWishListViewModel = ViewModelProviders.of(this, mViewModelProviderFactory).get(WishListViewModel.class);
         return mWishListView.getRootView();
     }

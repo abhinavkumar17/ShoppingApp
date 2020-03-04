@@ -1,11 +1,11 @@
 package com.cart.shoppingapp.ui.cartdetails;
 
 import com.cart.shoppingapp.model.CartDetails;
-import com.cart.shoppingapp.ui.baseview.ObservableViewMvc;
+import com.cart.shoppingapp.ui.baseview.ObservableView;
 
 import java.util.List;
 
-public interface CartDetailsView  extends ObservableViewMvc<CartDetailsView.Listener> {
+public interface CartDetailsView  extends ObservableView<CartDetailsView.Listener> {
 
     public interface Listener{
 
