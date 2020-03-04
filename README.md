@@ -23,7 +23,9 @@ UI layer is extracted into 3 parts:
            View: Interface which contains Listeners and common methods for view.
            
 Design Patterns Used:
-            1. Observable design pattern: This is used heavily for any events. Fragments who are registered for receiving events have to register before. 
+           
+          1. Observable design pattern: 
+                     This is used heavily for any events. Fragments who are registered for receiving events have to register before. 
             
             2. Factory design pattern
             
