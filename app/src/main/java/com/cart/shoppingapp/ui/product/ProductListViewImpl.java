@@ -53,6 +53,13 @@ public class ProductListViewImpl extends BaseView<ProductListView.Listener>
     }
 
     @Override
+    public void setServerError() {
+        mRecyclerView.setVisibility(View.GONE);
+        mEmplyListErrorView.setVisibility(View.VISIBLE);
+        mEmplyListErrorView.setText(getContext().getResources().getString(R.string.generic_error_statement));
+    }
+
+    @Override
     public void onProductClick(Product product) {
        for(Listener listener:getListeners()){
            listener.onProductItemClick(product);

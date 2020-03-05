@@ -43,14 +43,20 @@ public class ShoppingRepository {
         return wishListDao.getAllTrolleyProducts();
     }
 
+    WishListProduct wishListProduct;
+
     public void insertIntoTrolley(Product product) {
-        WishListProduct wishListProduct = new WishListProduct();
+        wishListProduct = new WishListProduct();
         wishListProduct.setName(product.getName());
         wishListProduct.setPrice(product.getPrice());
         wishListProduct.setCaterogy(product.getCaterogy());
         wishListProduct.setStock(product.getStock());
         wishListProduct.setOldPrice(product.getOldPrice());
         wishListDao.insert(wishListProduct);
+    }
+
+    public WishListProduct getprd(){
+        return wishListProduct;
     }
 
     public void deleteProduct(WishListProduct wishListProduct){

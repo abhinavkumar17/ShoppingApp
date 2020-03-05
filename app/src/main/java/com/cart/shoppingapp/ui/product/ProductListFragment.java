@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.cart.shoppingapp.R;
@@ -24,7 +23,8 @@ import javax.inject.Inject;
 
 import dagger.android.support.DaggerFragment;
 
-public class ProductListFragment extends DaggerFragment implements ProductListView.Listener {
+public class ProductListFragment extends DaggerFragment implements ProductListView.Listener,
+        ProductListViewModel.Listener {
 
 
     @Inject
@@ -49,7 +49,7 @@ public class ProductListFragment extends DaggerFragment implements ProductListVi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mProductListView = mViewFactory.newInstance(ProductListView.class,container,inflater);
+        mProductListView = mViewFactory.newInstance(ProductListView.class, container, inflater);
         mProductListViewModel = ViewModelProviders.of(this, mViewModelProviderFactory).get(ProductListViewModel.class);
         return mProductListView.getRootView();
     }
@@ -58,31 +58,20 @@ public class ProductListFragment extends DaggerFragment implements ProductListVi
     public void onStart() {
         super.onStart();
         mProductListView.registerListener(this);
+        mProductListViewModel.registerListener(this);
         mProductListView.showProgressIndication();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         getProductListData();
     }
 
     private void getProductListData() {
-        mProductListViewModel.fetchData();
-            mProductListViewModel.getProductList().observe(this, new Observer<List<Product>>() {
-                @Override
-                public void onChanged(List<Product> products) {
-                    mProcucts =products;
-                    mProductListView.hideProgressIndication();
-                    mProductListView.bindProductData(products);
-                }
-            });
+        mProductListViewModel.fetchProductList();
     }
 
     @Override
     public void onStop() {
         super.onStop();
         mProductListView.unregisterListener(this);
+        mProductListViewModel.unregisterListener(this);
     }
 
     @Override
@@ -92,5 +81,18 @@ public class ProductListFragment extends DaggerFragment implements ProductListVi
         fragmentTransaction.replace(R.id.screenContainer, ProductDetailsFragment.newInstance(product));
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onFetchProductSecessAndNotify(List<Product> products) {
+        mProcucts = products;
+        mProductListView.hideProgressIndication();
+        mProductListView.bindProductData(mProcucts);
+    }
+
+    @Override
+    public void onFetchProductFailAndNotify() {
+        mProductListView.hideProgressIndication();
+        mProductListView.setServerError();
     }
 }

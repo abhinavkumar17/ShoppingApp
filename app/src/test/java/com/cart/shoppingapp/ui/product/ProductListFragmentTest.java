@@ -1,10 +1,7 @@
 package com.cart.shoppingapp.ui.product;
 
-import com.cart.shoppingapp.di.viewmodule.ViewModelProviderFactory;
 import com.cart.shoppingapp.model.Product;
-import com.cart.shoppingapp.repository.ShoppingRepository;
 import com.cart.shoppingapp.testdata.ProductTestData;
-import com.cart.shoppingapp.ui.baseview.ViewFactory;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -16,19 +13,12 @@ import org.mockito.junit.MockitoRule;
 
 import java.util.List;
 
-import io.reactivex.Single;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class ProductListFragmentTest {
 
     // region constants ----------------------------------------------------------------------------
     private static final List<Product> PRODUCT_DETAILS = ProductTestData.getProduct();
-    private static final List<Product> PRODUCT_ERROR = ProductTestData.getProductError();
-    // private static final MutableLiveData<List<Product>> PRODUCT_DETAILS_DATA = ProductTestData.getProductListData();
     // endregion constants -------------------------------------------------------------------------
 
     @Rule
@@ -38,29 +28,18 @@ public class ProductListFragmentTest {
     ProductListFragment SUT;
 
     @Mock
-    ViewFactory mViewFactory;
-
-    @Mock
-    ViewModelProviderFactory mViewModelProviderFactory;
-
-    @Mock
     ProductListView mProductListView;
 
     @Mock
     private ProductListViewModel mProductListViewModel;
 
-    @Mock
-    ShoppingRepository mShoppingRepository;
-
     @Before
     public void setUp() throws Exception {
-        // mProductListView.bindProductData(PRODUCT_DETAILS);
     }
 
     @Test
     public void onStart_progressIndicationShown() throws Exception {
         // Arrange
-
         // Act
         SUT.onStart();
         // Assert
@@ -68,35 +47,50 @@ public class ProductListFragmentTest {
     }
 
     @Test
-    public void onStart1_progressIndicationShown() throws Exception {
+    public void onStart_register_listener_before_service_call() throws Exception {
         // Arrange
-        //Setting how up the mock behaves
-        final Single<List<Product>> returnedData = Single.just(PRODUCT_DETAILS);
-        when(mShoppingRepository.getProducts()).thenReturn(returnedData);
         // Act
-        //Fire the test method
-        mProductListViewModel = new ProductListViewModel(mShoppingRepository);
-        mProductListViewModel.fetchData();
-        //Check that our live data is updated
-        // Assert.assertEquals(PRODUCT_DETAILS, mProductListViewModel.getProductList().getValue());
+        SUT.onStart();
         // Assert
-        assertNotNull(mProductListViewModel.getProductList());
+        verify(mProductListView).registerListener(SUT);
+        verify(mProductListViewModel).registerListener(SUT);
     }
 
     @Test
-    public void onStart2_progressIndicationShown() throws Exception {
+    public void onStop_unregister_listener_after_service_call() throws Exception {
         // Arrange
-        //Setting how up the mock behaves
-        final Single<List<Product>> returnedData = Single.just(PRODUCT_ERROR);
-        when(mShoppingRepository.getProducts()).thenReturn(returnedData);
         // Act
-        //Fire the test method
-        mProductListViewModel = new ProductListViewModel(mShoppingRepository);
-        mProductListViewModel.fetchData();
-        //Check that our live data is updated
-        // Assert.assertEquals(PRODUCT_DETAILS, mProductListViewModel.getProductList().getValue());
+        SUT.onStop();
         // Assert
-        assertNull(mProductListViewModel.getProductList());
+        verify(mProductListView).unregisterListener(SUT);
+        verify(mProductListViewModel).unregisterListener(SUT);
+    }
 
+    @Test
+    public void onService_fail_progressIndicationHide() throws Exception {
+        // Arrange
+        // Act
+        SUT.onFetchProductFailAndNotify();
+        // Assert
+        verify(mProductListView).hideProgressIndication();
+    }
+
+    @Test
+    public void onService_successfulResponse_productBoundToView() throws Exception {
+        // Arrange
+        // Act
+        SUT.onFetchProductSecessAndNotify(PRODUCT_DETAILS);
+        // Assert
+        verify(mProductListView).hideProgressIndication();
+        verify(mProductListView).bindProductData(PRODUCT_DETAILS);
+    }
+
+    @Test
+    public void onService_failResponse_errorBoundToView() throws Exception {
+        // Arrange
+        // Act
+        SUT.onFetchProductFailAndNotify();
+        // Assert
+        verify(mProductListView).setServerError();
     }
 }

@@ -6,6 +6,7 @@ import com.cart.shoppingapp.ui.baseview.ObservableView;
 import java.util.List;
 
 public interface ProductListView extends ObservableView<ProductListView.Listener> {
+
     interface Listener {
         void onProductItemClick(Product product);
     }
@@ -13,4 +14,5 @@ public interface ProductListView extends ObservableView<ProductListView.Listener
     void showProgressIndication();
     void hideProgressIndication();
     void bindProductData(List<Product> products);
+    void setServerError();
 }

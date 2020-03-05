@@ -1,106 +1,78 @@
 package com.cart.shoppingapp.ui.product;
 
-import android.util.Log;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.cart.shoppingapp.model.CartDetails;
 import com.cart.shoppingapp.model.Product;
-import com.cart.shoppingapp.repository.ShoppingRepository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class ProductListViewModel extends ViewModel {
-    private ShoppingRepository mShoppingRepository;
+public class ProductListViewModel extends ViewModel implements FetchProductListUseCase.Listener {
+
+
+    public interface Listener {
+
+        void onFetchProductSecessAndNotify(List<Product> products);
+
+        void onFetchProductFailAndNotify();
+    }
+
+    private FetchProductListUseCase mFetchProductListUseCase;
 
     private CompositeDisposable mCompositeDisposable;
 
-    private MutableLiveData<List<Product>> productList = new MutableLiveData<>();
-
     private MutableLiveData<List<CartDetails>> cartList = new MutableLiveData<>();
 
+    private Set<Listener> mListeners = new HashSet<>();
+
     @Inject
-    ProductListViewModel(ShoppingRepository shoppingRepository) {
-        mShoppingRepository = shoppingRepository;
+    ProductListViewModel(FetchProductListUseCase fetchProductListUseCase) {
+        mFetchProductListUseCase = fetchProductListUseCase;
         mCompositeDisposable = new CompositeDisposable();
+        mFetchProductListUseCase.registerListener(this);
     }
 
-    public LiveData<List<Product>> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(MutableLiveData<List<Product>> productList) {
-        this.productList = productList;
-    }
-
-    public LiveData<List<CartDetails>> getAllCartList() {
-        return cartList;
-    }
-
-    public void fetchData() {
-        mCompositeDisposable.add(mShoppingRepository.getProducts().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<Product>>() {
-                    @Override
-                    public void onSuccess(List<Product> products) {
-                        productList.setValue(products);
-                        Log.d("", "");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("", "");
-                    }
-                }));
-    }
 
     @Override
     protected void onCleared() {
         super.onCleared();
+        mFetchProductListUseCase.unregisterListener(this);
         if (mCompositeDisposable != null) {
             mCompositeDisposable.clear();
             mCompositeDisposable = null;
         }
     }
 
-    public void fetchCartDetails() {
-        mCompositeDisposable.add(mShoppingRepository.getCartProducts().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<CartDetails>>() {
-                    @Override
-                    public void onSuccess(List<CartDetails> products) {
-                        cartList.setValue(products);
-                        Log.d("", "");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("", "");
-                    }
-                }));
+    public void fetchProductList() {
+        mCompositeDisposable.add(mFetchProductListUseCase.fetchProductList());
     }
 
-    public void deleteCartItem(int productId) {
-        mShoppingRepository.deletCartItem(productId).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d("", "");
-            }
+    public void registerListener(Listener listener) {
+        mListeners.add(listener);
+    }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.d("", "");
-            }
-        });
+    public void unregisterListener(Listener listener) {
+        mListeners.remove(listener);
+    }
+
+    @Override
+    public void onFetchProductSecessAndNotify(List<Product> products) {
+        for (Listener listener : mListeners) {
+            listener.onFetchProductSecessAndNotify(products);
+        }
+    }
+
+    @Override
+    public void onFetchProductFailAndNotify() {
+        for (Listener listener : mListeners) {
+            listener.onFetchProductFailAndNotify();
+        }
     }
 }
