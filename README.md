@@ -14,11 +14,13 @@ Dagger2
 
 # UI layer is extracted into 3 parts: 
 
-*  Fragment:Its role is to register listener and pass events to corresponding views.
+*  Fragment: Its role is to register listener and pass events to corresponding views.
            
 * Implementation: This is the veiw where Inflation and rendering of view happens.There is no chain of dependencies from Fragment to   FragmentImpl.This allows us to demostrate Dependency Inversion Principle of SOLID principle.This allows to swap different implementations of SpecificViewMvc very easily, which can be extremely beneficial (e.g. AB testing of different implementations of a screen) and makes it more readable.
            
-* Bullet list View: Interface which contains Listeners and common methods for view.
+* View: Interface which contains Listeners and common methods for view.
+
+* Usecase: This class will segragate out all web service relaled calls to have clean architecture.
            
 # Design Patterns Used:
 * Observable design pattern: This is used heavily for any events. Fragments will recieve events only if it is registered.
@@ -46,5 +48,5 @@ through ViewFactory class.
        ViewModelProviderFactory class 
        and bind Annotations.
 
-
-
+# Unit Test:
+     Unit test has been added for UI component - ProductListFragment and ProductListViewModel. As all other UI components have same hierarchy and structure, it will be replica for other classes. Not adding it for other classes as idae id to get the idea righr.
