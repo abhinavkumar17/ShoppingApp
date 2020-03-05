@@ -36,6 +36,10 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
     ProductListViewModel(FetchProductListUseCase fetchProductListUseCase) {
         mFetchProductListUseCase = fetchProductListUseCase;
         mCompositeDisposable = new CompositeDisposable();
+
+    }
+
+    public void registerViewModel() {
         mFetchProductListUseCase.registerListener(this);
     }
 

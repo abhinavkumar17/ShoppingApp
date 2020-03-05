@@ -58,6 +58,7 @@ public class ProductListFragment extends DaggerFragment implements ProductListVi
     public void onStart() {
         super.onStart();
         mProductListView.registerListener(this);
+        mProductListViewModel.registerViewModel();
         mProductListViewModel.registerListener(this);
         mProductListView.showProgressIndication();
         getProductListData();
