@@ -49,4 +49,6 @@ through ViewFactory class.
        and bind Annotations.
 
 # Unit Test:
-     Unit test has been added for UI component - ProductListFragment and ProductListViewModel. As all other UI components have same hierarchy and structure, it will be replica for other classes. Not adding it for other classes as idae id to get the idea righr.
+     Unit test has been added for UI component - ProductListFragment and ProductListViewModel. As all other UI 
+     components have same hierarchy and structure, it will be replica for other classes. Not adding it for 
+     other classes as it will be same. :)
