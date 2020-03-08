@@ -1,14 +1,12 @@
 package com.cart.shoppingapp.ui.product;
 
 import com.cart.shoppingapp.model.Product;
-import com.cart.shoppingapp.repository.ShoppingRepository;
 import com.cart.shoppingapp.testdata.ProductTestData;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -35,9 +33,7 @@ public class ProductListViewModelTest {
     @Mock
     private FetchProductListUseCase mFetchProductListUseCase;
 
-    //@InjectMocks
     ProductListViewModel SUT;
-
 
 
     @Before
@@ -57,14 +53,20 @@ public class ProductListViewModelTest {
     }
 
     @Test
-    public void FetchProductFailAndNotify_fail_listenersNotified() throws Exception {
+    public void fetchProductFailAndNotify_fail_listenersNotified() throws Exception {
         // Arrange
-        //success();
         // Act
         SUT.onFetchProductFailAndNotify();
         // Assert
         verify(mListener1).onFetchProductFailAndNotify();
     }
 
-
+    @Test
+    public void fetchProduct_sucess_add_to_compositable_true() throws Exception {
+        // Arrange
+        // Act
+        SUT.fetchProductList();
+        // Assert
+        verify(mFetchProductListUseCase).fetchProductList();
+    }
 }

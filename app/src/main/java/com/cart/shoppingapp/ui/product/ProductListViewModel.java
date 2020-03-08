@@ -26,8 +26,6 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
 
     private FetchProductListUseCase mFetchProductListUseCase;
 
-    private CompositeDisposable mCompositeDisposable;
-
     private MutableLiveData<List<CartDetails>> cartList = new MutableLiveData<>();
 
     private Set<Listener> mListeners = new HashSet<>();
@@ -35,8 +33,6 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
     @Inject
     ProductListViewModel(FetchProductListUseCase fetchProductListUseCase) {
         mFetchProductListUseCase = fetchProductListUseCase;
-        mCompositeDisposable = new CompositeDisposable();
-
     }
 
     public void registerViewModel() {
@@ -48,14 +44,10 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
     protected void onCleared() {
         super.onCleared();
         mFetchProductListUseCase.unregisterListener(this);
-        if (mCompositeDisposable != null) {
-            mCompositeDisposable.clear();
-            mCompositeDisposable = null;
-        }
     }
 
     public void fetchProductList() {
-        mCompositeDisposable.add(mFetchProductListUseCase.fetchProductList());
+       mFetchProductListUseCase.fetchProductList();
     }
 
     public void registerListener(Listener listener) {
